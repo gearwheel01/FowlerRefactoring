@@ -1,10 +1,9 @@
 package tests;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import Customer;
+import classes.Customer;
 
 public class CustomerTest {
 
@@ -23,5 +22,12 @@ public class CustomerTest {
     {
         assertEquals(customers[0].getName(), "Max");
         assertEquals(customers[1].getName(), "Maria");
+    }
+
+    @Test
+    public void testStatement()
+    {
+        assertTrue(customers[0].statement().startsWith("Rental Record for Max"));
+        assertTrue(customers[1].statement().endsWith("frequent renter points"));
     }
 }

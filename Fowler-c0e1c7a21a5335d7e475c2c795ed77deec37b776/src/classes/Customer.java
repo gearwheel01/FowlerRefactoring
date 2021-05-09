@@ -1,8 +1,9 @@
+package classes;
 
 import java.lang.*;
 import java.util.*;
 
-class Customer {
+public class Customer {
     private String name;
     private Vector rentals = new Vector();
     public Customer (String newname){
@@ -14,6 +15,7 @@ class Customer {
     public String getName (){
         return name;
     };
+
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
