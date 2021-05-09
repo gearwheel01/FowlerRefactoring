@@ -1,5 +1,7 @@
 package classes;
 
+import classes.price.*;
+
 public class Movie {
 
     public static final int CHILDRENS = 2;
@@ -7,18 +9,31 @@ public class Movie {
     public static final int NEW_RELEASE = 1;
 
     private String title;
-    private int priceCode;
+    private Price price;
 
-    public Movie(String newtitle, int newpriceCode) {
+    public Movie(String newtitle, int newPriceCode) {
         title = newtitle;
-        priceCode = newpriceCode;
+        setPrice(newPriceCode);
     }
 
-    public int getPriceCode() {
-        return priceCode;
+    public int getPrice() {
+        return price.getPriceCode();
     }
-    public void setPriceCode(int arg) {
-        priceCode = arg;
+    public void setPrice(int arg) {
+        switch (arg) {
+            case REGULAR:
+                price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                price = new ChildrensPrice();
+                break;
+            case NEW_RELEASE:
+                price = new NewReleasePrice();
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect Price Code");
+        }
+
     }
     public String getTitle (){
         return title;
@@ -27,7 +42,7 @@ public class Movie {
     public double getCharge(int days) {
         double result = 0;
 
-        switch (priceCode) {
+        switch (price.getPriceCode()) {
             case Movie.REGULAR:
                 result += 2;
                 if (days > 2)
@@ -47,7 +62,7 @@ public class Movie {
 
     public int getFrequentRenterPoints(int days) {
         // add bonus for a two day new release rental
-        if ((priceCode == Movie.NEW_RELEASE) && days > 1)
+        if ((price.getPriceCode() == Movie.NEW_RELEASE) && days > 1)
             return 2;
 
         return 1;
