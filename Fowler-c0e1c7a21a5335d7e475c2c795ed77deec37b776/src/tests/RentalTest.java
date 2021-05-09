@@ -14,7 +14,7 @@ public class RentalTest {
     @Before
     public void createTestData()
     {
-        movie = new Movie("Blockbuster", 12);
+        movie = new Movie("Blockbuster", Movie.NEW_RELEASE);
         rental = new Rental(movie, 7);
     }
 

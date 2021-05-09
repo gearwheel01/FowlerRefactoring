@@ -12,15 +12,15 @@ public class MovieTest {
     @Before
     public void createTestData()
     {
-        movie = new Movie("Blockbuster",12);
+        movie = new Movie("Blockbuster",Movie.NEW_RELEASE);
     }
 
     @Test
     public void testPriceCode()
     {
-        assertEquals(movie.getPriceCode(), 12);
-        movie.setPriceCode(13);
-        assertEquals(movie.getPriceCode(), 13);
+        assertEquals(movie.getPrice(), Movie.NEW_RELEASE);
+        movie.setPrice(Movie.CHILDRENS);
+        assertEquals(movie.getPrice(), Movie.CHILDRENS);
     }
 
     @Test
