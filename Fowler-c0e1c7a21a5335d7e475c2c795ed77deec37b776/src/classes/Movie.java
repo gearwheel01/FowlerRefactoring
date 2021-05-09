@@ -40,24 +40,7 @@ public class Movie {
     };
 
     public double getCharge(int days) {
-        double result = 0;
-
-        switch (price.getPriceCode()) {
-            case Movie.REGULAR:
-                result += 2;
-                if (days > 2)
-                    result += (days - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                result += days * 3;
-                break;
-            case Movie.CHILDRENS:
-                result += 1.5;
-                if (days > 3)
-                    result += (days - 3) * 1.5;
-                break;
-        }
-        return result;
+        return price.getCharge(days);
     }
 
     public int getFrequentRenterPoints(int days) {
